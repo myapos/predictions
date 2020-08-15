@@ -12,6 +12,7 @@
     "update:packages:ncu": "ncu -u && npm update && npm run clean:install"
   },
   "dependencies": {
+    "@tensorflow/tfjs": "^2.3.0",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
