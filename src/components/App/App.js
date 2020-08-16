@@ -7,12 +7,12 @@ import { styles } from "./styles";
 const useStyles = createUseStyles({ ...genericStyles, ...styles });
 
 const App = () => {
-  const genericClasses = useStyles();
+  const loadClasses = useStyles();
 
   const classes = classNames({
-    [genericClasses.app]: true,
-    [genericClasses.horizontalCenter]: true,
-    [genericClasses.halfWidth]: true
+    [loadClasses.app]: true,
+    [loadClasses.horizontalCenter]: true,
+    [loadClasses.halfWidth]: true
   });
   return <div className={classes}>I am a react component</div>;
 };

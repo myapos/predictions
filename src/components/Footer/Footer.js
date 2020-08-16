@@ -8,10 +8,10 @@ import * as utils from "../../utils";
 const useStyles = createUseStyles({ ...styles });
 
 const Footer = () => {
-  const genericClasses = useStyles();
+  const loadClasses = useStyles();
 
   const classes = classNames({
-    [genericClasses.footer]: true
+    [loadClasses.footer]: true
   });
   return <div className={classes}>Footer</div>;
 };

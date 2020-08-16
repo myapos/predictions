@@ -11,13 +11,13 @@ import Footer from "../Footer/Footer";
 const useStyles = createUseStyles({ ...genericStyles, ...styles });
 
 const Wrapper = () => {
-  const genericClasses = useStyles();
+  const loadClasses = useStyles();
   // const { values, columnNames, numOfFeatures } = utils.loadData();
 
-  console.log("genericClasses", genericClasses);
+  console.log("loadClasses", loadClasses);
   const classes = classNames({
-    [genericClasses.wrapper]: true,
-    [genericClasses.totalCenter]: true
+    [loadClasses.wrapper]: true,
+    [loadClasses.totalCenter]: true
   });
   return (
     <div className={classes}>
