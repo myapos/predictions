@@ -3,6 +3,8 @@ import * as functionGenerators from "./functionGenerators";
 
 import * as actions from ".";
 
-function* rootSaga() {}
+function* rootSaga() {
+  console.log("sagas is loaded succesfully");
+}
 
 export default rootSaga;
