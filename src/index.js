@@ -2,8 +2,9 @@ import ReactDOM from "react-dom";
 import React from "react";
 import Wrapper from "./components/Wrapper/Wrapper";
 
-const element = document.getElementById("root");
+// import generic css
+import "./css/css.styl";
 
-// const myMainComponent = Wrapper();
+const element = document.getElementById("root");
 
 ReactDOM.render(<Wrapper />, element);

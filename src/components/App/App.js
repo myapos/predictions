@@ -1,16 +1,16 @@
 import React from "react";
 import classNames from "classnames";
 import { createUseStyles } from "react-jss";
-import { styles } from "../../styles";
+import { genericStyles } from "../../genericStyles";
+import { styles } from "./styles";
 
-import "../../css/css.styl";
-
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles({ ...genericStyles, ...styles });
 
 const App = () => {
   const genericClasses = useStyles();
 
-  const classes = classNames("app", {
+  const classes = classNames({
+    [genericClasses.app]: true,
     [genericClasses.horizontalCenter]: true,
     [genericClasses.halfWidth]: true
   });
