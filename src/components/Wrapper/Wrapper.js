@@ -14,7 +14,6 @@ const Wrapper = () => {
   const loadClasses = useStyles();
   // const { values, columnNames, numOfFeatures } = utils.loadData();
 
-  console.log("loadClasses", loadClasses);
   const classes = classNames({
     [loadClasses.wrapper]: true,
     [loadClasses.totalCenter]: true

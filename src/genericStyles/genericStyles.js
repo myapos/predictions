@@ -26,6 +26,10 @@ const styles = {
     width: "50%"
   },
 
+  nearTotalWidth: {
+    width: "90%"
+  },
+
   halfHeight: {
     width: "50%"
   },

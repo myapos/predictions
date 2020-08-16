@@ -1,5 +1,7 @@
 import React from "react";
 import classNames from "classnames";
+
+import TabPanel from "../TabPanel/TabPanel";
 import { createUseStyles } from "react-jss";
 import { genericStyles } from "../../genericStyles";
 import { styles } from "./styles";
@@ -11,10 +13,14 @@ const App = () => {
 
   const classes = classNames({
     [loadClasses.app]: true,
-    [loadClasses.horizontalCenter]: true,
-    [loadClasses.halfWidth]: true
+    [loadClasses.horizontalCenter]: false,
+    [loadClasses.nearTotalWidth]: true
   });
-  return <div className={classes}>I am a react component</div>;
+  return (
+    <div className={classes}>
+      <TabPanel />
+    </div>
+  );
 };
 
 export default App;
