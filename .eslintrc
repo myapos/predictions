@@ -1,5 +1,5 @@
 {
-  "extends": "phaistos-networks",
+  "extends": ["airbnb", "prettier"],
   "rules": {
     "func-names": 0,
     "one-var": 0,
@@ -13,17 +13,13 @@
     "max-lines-per-function": 1,
     "no-debugger": 0
   },
+  "plugins": ["react", "react-hooks", "prettier"],
   "settings": {
     "react": {
       "pragma": "h"
     }
   },
-  "globals": {
-    "Adman": true,
-    "bitmovin": true,
-    "PhaistosPlayer": true,
-    "ga": true
-  },
+  "globals": {},
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 6
