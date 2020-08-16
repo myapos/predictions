@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/css.styl";
+import "../../css/css.styl";
 import * as utils from "../../utils";
 
 const Wrapper = () => {
