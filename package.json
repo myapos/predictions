@@ -21,9 +21,11 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.0.8",
+    "final-form": "^4.20.1",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-final-form": "^6.5.1",
     "react-jss": "^10.4.0",
     "react-responsive-tabs": "^4.1.1"
   },
