@@ -1,5 +1,62 @@
 // add your stylus rules here
+html,body {
+    margin:0;
+    background-color: lightblue;
+    font-family: "Lucida Console", Courier, monospace;
+}
+
+.horizontalCenter: {
+    display:flex;
+    justify-content:center;
+    text-align:center;
+}
+
+.totalCenter {
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    text-align:center;
+}
+
+.totalWidth {
+    width: 100%;
+}
+
+.halfWidth {
+    width: 50%;
+}
+
+.halfHeight {
+    width: 50%;
+}
+
+.totalHeight {
+    width: 100%;
+}
+
+.totalWidthAndHeight {
+    width: 100%;
+    height: 100%;
+}
+
+.halfWidthAndHeight {
+    width: 100%;
+    height: 100%;
+}
 
 .wrapper {
-    
+    width: 100%;
+    height: 100vh;
+    flex-direction:column;
+}
+
+.app {
+    border: 1px solid black;
+    min-height: 50vh;
+    background-color:lightgreen;
+}
+
+.footer {
+    padding: 0.8rem;
+    font-size: 0.8rem;
 }
