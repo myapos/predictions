@@ -13,7 +13,15 @@ const Footer = () => {
   const classes = classNames({
     [loadClasses.footer]: true
   });
-  return <div className={classes}>Footer</div>;
+  return (
+    <div className={classes}>
+      Developed by{" "}
+      <a href="https://github.com/myapos" target="_blank">
+        Myron Apostolakis
+      </a>{" "}
+      @2020
+    </div>
+  );
 };
 
 export default Footer;
