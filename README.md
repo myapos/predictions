@@ -2,7 +2,7 @@
 
 ### Usage
 
-A simple project that utilizes tensorfloJS for timeseries prediction. For development run `yarn start` and then visit `http:localhost:1234`. For production run `yarn build`. The bundled script is exported to `./dist/bundle.js`. For testing with jest run `yarn test`.
+A simple project that utilizes TensorflowJS for timeseries prediction. For development run `yarn start` and then visit `http:localhost:1234`. For production run `yarn build`. The bundled script is exported to `./dist/bundle.js`. For testing with jest run `yarn test`.
 
 #### Description
 
