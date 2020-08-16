@@ -1,8 +1,9 @@
 import ReactDOM from "react-dom";
+import React from "react";
 import Wrapper from "./components/Wrapper/Wrapper";
 
 const element = document.getElementById("root");
 
-const myMainComponent = Wrapper();
+// const myMainComponent = Wrapper();
 
-ReactDOM.render(myMainComponent, element);
+ReactDOM.render(<Wrapper />, element);
