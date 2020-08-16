@@ -15,16 +15,16 @@ const loadData = async () => {
   //     },
   //   },
   // });
-    const csvUrl =
-      "http://localhost:1234/src/data/datasets_56102_107707_monthly-beer-production-in-austr.csv";
+  const csvUrl =
+    "http://localhost:1234/src/data/datasets_56102_107707_monthly-beer-production-in-austr.csv";
 
-    const csvDataset = tf.data.csv(csvUrl, {
-      columnConfigs: {
-        "Monthly beer production": {
-          isLabel: true,
-        },
-      },
-    });
+  const csvDataset = tf.data.csv(csvUrl, {
+    columnConfigs: {
+      "Monthly beer production": {
+        isLabel: true
+      }
+    }
+  });
 
   //   const csvDataset = tf.data.csv(csvUrl);
 
@@ -39,17 +39,26 @@ const loadData = async () => {
   const numOfFeatures = columnNames.length - 1;
   //   console.log("numOfFeatures", numOfFeatures, " columnNames", columnNames[0]);
 
-  trainModel({
-    values,
-    columnNames,
-    numOfFeatures,
-    csvDataset,
-  });
+  // steps 1 -- data preparation
+
+  // steps 2 -- optional visualization
+
+  // step 3 -- train model
+
+  // step 4 -- predict values
+
+  // step 5 visualize date
+  // trainModel({
+  //   values,
+  //   columnNames,
+  //   numOfFeatures,
+  //   csvDataset
+  // });
   return {
     values,
     columnNames,
     numOfFeatures,
-    csvDataset,
+    csvDataset
   };
 };
 
