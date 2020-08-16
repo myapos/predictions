@@ -14,7 +14,7 @@ function getTabs(tabs) {
   console.log("tabs", tabs);
   const loadClasses = useStyles();
 
-  const classes = classNames("tab", {
+  const classes = classNames({
     [loadClasses.equalItems]: true
   });
 
@@ -24,7 +24,7 @@ function getTabs(tabs) {
     /* Optional parameters */
     key: index,
     tabClassName: classes,
-    panelClassName: "panel"
+    panelClassName: loadClasses.panel
   }));
 }
 
