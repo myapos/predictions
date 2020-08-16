@@ -1,4 +1,6 @@
 import React from "react";
+import classNames from "classnames";
+
 import "../../css/css.styl";
 import * as utils from "../../utils";
 import App from "../App/App";
@@ -8,8 +10,9 @@ const Wrapper = () => {
   // Similar to componentDidMount and componentDidUpdate:
   // const { values, columnNames, numOfFeatures } = utils.loadData();
 
+  const classes = classNames("wrapper totalCenter");
   return (
-    <div className="wrapper totalCenter">
+    <div className={classes}>
       <App />
       <Footer />
     </div>
