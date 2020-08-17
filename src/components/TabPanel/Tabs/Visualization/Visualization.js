@@ -14,7 +14,6 @@ import {
   Cell
 } from "recharts";
 
-import * as utils from "../../../../utils";
 import { styles } from "./styles";
 
 import * as actions from "../../../../store";
@@ -27,17 +26,8 @@ const GRAPH_WIDTH = 800;
 /* It will load a bunch of graphs. Linecharts, barcharts from raw data and SMA using tensorflowJS  */
 const Visualization = (props) => {
   const loadClasses = useStyles();
-  const { rawData } = findStateProperty(props, "loadCSV");
+  const { plotSMAValues, processed } = findStateProperty(props, "sma");
 
-  const processed = rawData.map((value) => {
-    return { xs: value.xs.Month, ys: value.ys["Monthly beer production"] };
-  });
-
-  const sma = utils.computeSMA(processed);
-
-  const plotSMAValues = utils.plotSMA({ sma, processed });
-
-  // merge
   return (
     <div className={loadClasses.wrapper}>
       <LineChart
