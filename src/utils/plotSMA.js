@@ -5,11 +5,9 @@ import { WINDOW_SIZE } from "../constants";
  * if values counter > window_size then the sma value is matched with the next date
  * until next date exist  */
 function plotSMA({ sma, window_size = WINDOW_SIZE, processed }) {
-  console.log("window_size", window_size);
   const matchSMADates = {};
   sma.forEach((value, index) => {
     if (index >= window_size && index + 1 < sma.length) {
-      console.log("index", index);
       const { set } = sma[index + 1];
       matchSMADates[set[set.length - 1].xs] = {
         xs: set[set.length - 1].xs,
@@ -18,7 +16,6 @@ function plotSMA({ sma, window_size = WINDOW_SIZE, processed }) {
     }
   });
 
-  console.log("matchSMADates", matchSMADates);
   // merge matchSMADates with processed
   // if date exist in  processed values then add the sma
 
@@ -26,7 +23,6 @@ function plotSMA({ sma, window_size = WINDOW_SIZE, processed }) {
     const smaValues = { xs: "", sma: "" };
 
     if (matchSMADates[value.xs]) {
-      console.log("index", index);
       smaValues.sma = matchSMADates[value.xs].sma;
       smaValues.xs = matchSMADates[value.xs].xs;
     }

@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import classNames from "classnames";
 import { createUseStyles } from "react-jss";
 import {
   LineChart,
@@ -31,16 +30,12 @@ const Visualization = (props) => {
   const { rawData } = findStateProperty(props, "loadCSV");
 
   const processed = rawData.map((value) => {
-    // console.log(value);
     return { xs: value.xs.Month, ys: value.ys["Monthly beer production"] };
   });
 
   const sma = utils.computeSMA(processed);
-  console.log("processed", processed);
 
   const plotSMAValues = utils.plotSMA({ sma, processed });
-
-  console.log("plotSMAValues", plotSMAValues);
 
   // merge
   return (
