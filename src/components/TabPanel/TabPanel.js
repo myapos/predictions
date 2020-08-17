@@ -11,7 +11,6 @@ import { tabs } from "./tabs";
 const useStyles = createUseStyles({ ...tabPanelStyles });
 
 function getTabs(tabs) {
-  console.log("tabs", tabs);
   const loadClasses = useStyles();
 
   const classes = classNames({
