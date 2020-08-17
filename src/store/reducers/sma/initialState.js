@@ -1,6 +1,7 @@
 const initialState = {
   plotSMAValues: [],
-  processed: []
+  processed: [],
+  sma: []
 };
 
 export default initialState;

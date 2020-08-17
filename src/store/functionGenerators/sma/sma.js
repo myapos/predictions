@@ -21,7 +21,8 @@ function* sma(action) {
     yield put({
       type: actions.SAGAS_PLOT_SMA_VALUES,
       plotSMAValues,
-      processed
+      processed,
+      sma
     });
   } catch (e) {
     console.error("error", e);

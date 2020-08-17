@@ -14,15 +14,7 @@ const callback = (epoch, log) => {
 const TrainModel = (props) => {
   console.log("props", props);
   const loadClasses = useStyles();
-
-  const { rawData } = findStateProperty(props, "loadCSV");
-  const processed = rawData.map((value) => {
-    return { xs: value.xs.Month, ys: value.ys["Monthly beer production"] };
-  });
-
-  const sma = utils.computeSMA(processed);
-
-  const plotSMAValues = utils.plotSMA({ sma, processed });
+  const { sma, processed } = findStateProperty(props, "sma");
 
   var inputs = sma.map(function (inp_f) {
     return inp_f["set"].map(function (val) {

@@ -1,0 +1,2 @@
+export const SAGAS_SMA = "SAGAS_SMA";
+export const SAGAS_PLOT_SMA_VALUES = "SAGAS_PLOT_SMA_VALUES";
