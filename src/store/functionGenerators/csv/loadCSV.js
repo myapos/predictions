@@ -3,14 +3,21 @@ import * as api from "../../../api";
 import * as actions from "../..";
 
 function* loadCSV(action) {
-  const state = yield select();
-  const { url } = action;
-  console.log("action", action);
-  const res = yield call(api.loadCSV, url);
+  try {
+    const state = yield select();
+    const { url } = action;
+    console.log("action", action);
+    const res = yield call(api.loadCSV, url);
 
-  console.log("res", res);
+    console.log("res", res);
 
-  yield put({ type: actions.SAGAS_LOAD_CSV, rawData: res });
+    if (res.length > 0) {
+      alert("Loaded data");
+      yield put({ type: actions.SAGAS_LOAD_CSV, rawData: res });
+    }
+  } catch (e) {
+    console.error("error", e);
+  }
 }
 
 export default loadCSV;
