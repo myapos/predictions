@@ -1,6 +1,7 @@
 import * as tf from "@tensorflow/tfjs";
 import * as CONSTANTS from "../constants/constants";
-const trainModel = async ({
+
+function* trainModel({
   inputs,
   outputs,
   size = CONSTANTS.N_ITEMS,
@@ -9,8 +10,8 @@ const trainModel = async ({
   learning_rate = CONSTANTS.LR_RATE,
   n_layers = CONSTANTS.N_HL,
   callback
-}) => {
-  console.log("Before: inputs", inputs, " outputs", outputs);
+}) {
+  // console.log("Before: inputs", inputs, " outputs", outputs);
   const input_layer_shape = window_size;
   const input_layer_neurons = 100;
   const rnn_input_layer_features = 10;
@@ -22,9 +23,10 @@ const trainModel = async ({
   const output_layer_shape = rnn_output_neurons;
   const output_layer_neurons = 1;
   const model = tf.sequential();
+
   inputs = inputs.slice(0, Math.floor((size / 100) * inputs.length));
   outputs = outputs.slice(0, Math.floor((size / 100) * outputs.length));
-  console.log("After: inputs", inputs, " outputs", outputs);
+  // console.log("After: inputs", inputs, " outputs", outputs);
   const xs = tf
     .tensor2d(inputs, [inputs.length, inputs[0].length])
     .div(tf.scalar(10));
@@ -32,9 +34,10 @@ const trainModel = async ({
     .tensor2d(outputs, [outputs.length, 1])
     .reshape([outputs.length, 1])
     .div(tf.scalar(10));
-  console.log("created xs and ys tensors");
-  xs.print();
-  ys.print();
+  // console.log("created xs and ys tensors");
+
+  // xs.print();
+  // ys.print();
   model.add(
     tf.layers.dense({
       units: input_layer_neurons,
@@ -42,11 +45,11 @@ const trainModel = async ({
     })
   );
   model.add(tf.layers.reshape({ targetShape: rnn_input_shape }));
-  var lstm_cells = [];
+  const lstm_cells = [];
   for (let index = 0; index < n_layers; index++) {
     lstm_cells.push(tf.layers.lstmCell({ units: rnn_output_neurons }));
   }
-  console.log("lstm_cells", lstm_cells);
+  // console.log("lstm_cells", lstm_cells);
   model.add(
     tf.layers.rnn({
       cell: lstm_cells,
@@ -62,16 +65,17 @@ const trainModel = async ({
   );
   const opt_adam = tf.train.adam(learning_rate);
   model.compile({ optimizer: opt_adam, loss: "meanSquaredError" });
-  const hist = await model.fit(xs, ys, {
+
+  const hist = yield model.fit(xs, ys, {
     batchSize: rnn_batch_size,
     epochs: n_epochs,
     callbacks: {
-      onEpochEnd: async (epoch, log) => {
+      onEpochEnd: (epoch, log) => {
         callback(epoch, log);
       }
     }
   });
-  return { model: model, stats: hist };
-};
+  return { model, stats: hist };
+}
 
 export default trainModel;
