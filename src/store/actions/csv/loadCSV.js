@@ -1,3 +1,9 @@
 /*  Load csv data actions */
 
-export const LOGIN = "LOGIN";
+export const GET_URL = "GET_URL";
+export const SAGAS_LOAD_CSV = "SAGAS_LOAD_CSV";
+
+export const getURl = (url) => ({
+  type: GET_URL,
+  url
+});
