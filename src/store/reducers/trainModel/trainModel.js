@@ -32,7 +32,6 @@ const trainModel = (state = initialState, action) => {
 
       const newEpochLoss = [...state.epochLoss];
 
-      console.log("state", state, epochValue, lossValue, newEpochLoss);
       return {
         ...state,
         epochLoss: newEpochLoss

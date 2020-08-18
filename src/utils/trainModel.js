@@ -77,7 +77,6 @@ function* trainModel({
     epochs: n_epochs,
     callbacks: {
       onEpochEnd(epochValue, { loss: lossValue }) {
-        console.log(`epoch:${epochValue}, loss:${lossValue}`);
         fn(epochValue, lossValue);
       }
     }
