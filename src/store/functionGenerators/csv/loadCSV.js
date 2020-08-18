@@ -9,11 +9,13 @@ function* loadCSV(action) {
     console.log("action", action);
     const res = yield call(api.loadCSV, url);
 
-    console.log("res", res);
-
     if (res.length > 0) {
-      alert("Loaded data");
       yield put({ type: actions.SAGAS_LOAD_CSV, rawData: res });
+
+      // calculate sma
+      yield put({ type: actions.SAGAS_SMA });
+
+      alert("Loaded data");
     }
   } catch (e) {
     console.error("error", e);
