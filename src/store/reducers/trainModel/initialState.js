@@ -1,7 +1,9 @@
 const initialState = {
   model: {},
   stats: {},
-  epochLoss: []
+  epochLoss: [],
+  inputs: [],
+  outputs: []
 };
 
 export default initialState;

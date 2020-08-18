@@ -9,3 +9,7 @@ export * from "./sma/sma";
 /* TRAIN MODEL */
 
 export * from "./trainModel/trainModel";
+
+/* PREDICTION */
+
+export * from "./prediction/prediction";

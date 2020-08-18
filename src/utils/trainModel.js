@@ -78,6 +78,9 @@ function* trainModel({
     callbacks: {
       onEpochEnd(epochValue, { loss: lossValue }) {
         fn(epochValue, lossValue);
+      },
+      onTrainEnd(logs) {
+        alert("Model is trained");
       }
     }
   });
