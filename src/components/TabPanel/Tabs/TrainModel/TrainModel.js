@@ -9,11 +9,20 @@ import findStateProperty from "../../../../helpers/findStateProperty";
 const useStyles = createUseStyles({ ...styles });
 
 const TrainModel = (props) => {
+  const { getEpochAndLoss } = props;
+
   useEffect(() => {
-    props.trainModel();
+    props.trainModel(getEpochAndLoss);
   }, []);
+
+  const { epoch, loss } = findStateProperty(props, "trainModel");
+
   const loadClasses = useStyles();
-  return <div>TrainModel</div>;
+  return (
+    <div>
+      Epoch: {epoch} Loss: {loss}
+    </div>
+  );
 };
 
 export default connect((state) => state, actions)(TrainModel);

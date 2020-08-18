@@ -4,14 +4,10 @@ import * as actions from "../..";
 import findStateProperty from "../../../helpers/findStateProperty";
 import * as utils from "../../../utils";
 
-function callback(epoch, log) {
-  console.log(`epoch:${epoch}, loss:${log.loss}`);
-
-  // yield put({ type: actions.SAGAS_EPOCH_LOSS, epoch, loss: log.loss });
-}
-
 function* trainModel(action) {
   try {
+    console.log("action trainModel", action);
+    const { fn } = action;
     const state = yield select();
 
     const { sma, processed } = findStateProperty(state, "sma");
@@ -29,7 +25,7 @@ function* trainModel(action) {
     const { model, stats } = yield call(utils.trainModel, {
       inputs,
       outputs,
-      callback
+      fn
     });
 
     yield put({ type: actions.SAGAS_TRAIN_MODEL, model, stats });

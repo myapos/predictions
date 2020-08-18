@@ -1,6 +1,8 @@
 const initialState = {
   model: {},
-  stats: {}
+  stats: {},
+  epoch: 0,
+  loss: 0
 };
 
 export default initialState;
