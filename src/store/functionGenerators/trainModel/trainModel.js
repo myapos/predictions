@@ -30,7 +30,13 @@ function* trainModel(action) {
       fn
     });
 
-    yield put({ type: actions.SAGAS_TRAIN_MODEL, model, stats });
+    yield put({
+      type: actions.SAGAS_TRAIN_MODEL,
+      model,
+      stats,
+      inputs,
+      outputs
+    });
   } catch (e) {
     console.error("error", e);
   }

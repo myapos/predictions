@@ -3,14 +3,17 @@ import initialState from "./initialState";
 
 // eslint-disable-next-line max-lines-per-function
 const trainModel = (state = initialState, action) => {
-  const { type, model, stats, epochValue, lossValue } = action;
+  const { type, model, stats, epochValue, lossValue, inputs, outputs } = action;
 
   switch (type) {
     case actions.SAGAS_TRAIN_MODEL:
+      window.trainModel = { model, stats }; // save model to global window
       return {
         ...state,
-        model,
-        stats
+        inputs,
+        outputs
+        // model,
+        // stats
       };
 
     case actions.RESET_TRAIN_MODEL:
