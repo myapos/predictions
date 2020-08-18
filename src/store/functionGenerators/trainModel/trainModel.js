@@ -6,7 +6,9 @@ import * as utils from "../../../utils";
 
 function* trainModel(action) {
   try {
-    console.log("action trainModel", action);
+    // reset epochLoss
+    yield put({ type: actions.RESET_TRAIN_MODEL });
+
     const { fn } = action;
     const state = yield select();
 

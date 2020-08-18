@@ -8,6 +8,11 @@ import findStateProperty from "../../../../helpers/findStateProperty";
 
 const useStyles = createUseStyles({ ...styles });
 
+const Row = ({ epoch, loss }) => (
+  <div>
+    Epoch: {epoch} Loss: {loss}{" "}
+  </div>
+);
 const TrainModel = (props) => {
   const { getEpochAndLoss } = props;
 
@@ -15,12 +20,14 @@ const TrainModel = (props) => {
     props.trainModel(getEpochAndLoss);
   }, []);
 
-  const { epoch, loss } = findStateProperty(props, "trainModel");
+  const { epochLoss } = findStateProperty(props, "trainModel");
 
   const loadClasses = useStyles();
   return (
     <div>
-      Epoch: {epoch} Loss: {loss}
+      {epochLoss.map((item) => (
+        <Row epoch={item.epoch} loss={item.loss} key={item.id} />
+      ))}
     </div>
   );
 };

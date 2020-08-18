@@ -14,8 +14,7 @@ function* trainModel({
   fn
 }) {
   const state = yield select();
-  console.log("state", state);
-  // console.log("Before: inputs", inputs, " outputs", outputs);
+
   const input_layer_shape = window_size;
   const input_layer_neurons = 100;
 
@@ -77,10 +76,9 @@ function* trainModel({
     batchSize: rnn_batch_size,
     epochs: n_epochs,
     callbacks: {
-      onEpochEnd(epoch, log) {
-        const { loss } = log;
-        console.log(`epoch:${epoch}, loss:${loss}`);
-        fn(epoch, loss);
+      onEpochEnd(epochValue, { loss: lossValue }) {
+        console.log(`epoch:${epochValue}, loss:${lossValue}`);
+        fn(epochValue, lossValue);
       }
     }
   });

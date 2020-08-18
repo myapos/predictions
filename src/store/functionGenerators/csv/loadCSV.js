@@ -9,8 +9,6 @@ function* loadCSV(action) {
     console.log("action", action);
     const res = yield call(api.loadCSV, url);
 
-    console.log("res", res);
-
     if (res.length > 0) {
       yield put({ type: actions.SAGAS_LOAD_CSV, rawData: res });
 
