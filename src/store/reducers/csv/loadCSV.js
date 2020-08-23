@@ -3,18 +3,19 @@ import initialState from "./initialState";
 
 // eslint-disable-next-line max-lines-per-function
 const loadCSV = (state = initialState, action) => {
-  const { type, rawData, values } = action;
+  const { type, rawData, parameters } = action;
 
   switch (type) {
     case actions.GET_URL:
-      const { url, csvProperty, epochs, windowSize } = values;
+      const { url, csvProperty, epochs, windowSize, dateProperty } = parameters;
       return {
         ...state,
-        values: {
+        parameters: {
           url,
           csvProperty,
           epochs: parseInt(epochs),
-          windowSize: parseInt(windowSize)
+          windowSize: parseInt(windowSize),
+          dateProperty
         }
       };
     case actions.SAGAS_LOAD_CSV:

@@ -1,10 +1,9 @@
-import { WINDOW_SIZE } from "../constants";
 // plot sma
 /** It will return an object that will be used to plot SMA values in the same line chart
  * with the raw data. For the first window_size values do not give sma
  * if values counter > window_size then the sma value is matched with the next date
  * until next date exist  */
-function plotSMA({ sma, window_size = WINDOW_SIZE, processed }) {
+function plotSMA({ sma, windowSize: window_size, processed }) {
   const matchSMADates = {};
   sma.forEach((value, index) => {
     if (index >= window_size && index + 1 < sma.length) {

@@ -5,9 +5,9 @@ import * as actions from "../..";
 function* loadCSV(action) {
   try {
     const state = yield select();
-    const { values } = action;
+    const { parameters } = action;
 
-    const { url, csvProperty } = values;
+    const { url, csvProperty } = parameters;
     const res = yield call(api.loadCSV, url, csvProperty);
 
     if (res.length > 0) {

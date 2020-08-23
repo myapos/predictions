@@ -1,6 +1,6 @@
 const initialState = {
   rawData: "",
-  values: {}
+  parameters: {}
 };
 
 export default initialState;

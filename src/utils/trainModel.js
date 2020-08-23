@@ -17,7 +17,7 @@ function* trainModel({
   const state = yield select();
 
   const {
-    values: { epochs: n_epochs, windowSize: window_size }
+    parameters: { epochs: n_epochs, windowSize: window_size }
   } = findStateProperty(state, "loadCSV");
 
   const input_layer_shape = window_size;

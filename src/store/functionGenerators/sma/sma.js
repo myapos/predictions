@@ -9,17 +9,17 @@ function* sma(action) {
     const state = yield select();
 
     console.log("state", state);
-    const { rawData, values } = findStateProperty(state, "loadCSV");
+    const { rawData, parameters } = findStateProperty(state, "loadCSV");
 
-    const { csvProperty } = values;
+    const { csvProperty, dateProperty, windowSize } = parameters;
     const processed = rawData.map((value) => {
-      return { xs: value.xs.Month, ys: value.ys[csvProperty] };
+      return { xs: value.xs[dateProperty], ys: value.ys[csvProperty] };
     });
 
     const sma = utils.computeSMA(processed);
 
     // merge
-    const plotSMAValues = utils.plotSMA({ sma, processed });
+    const plotSMAValues = utils.plotSMA({ sma, processed, windowSize });
 
     yield put({
       type: actions.SAGAS_PLOT_SMA_VALUES,

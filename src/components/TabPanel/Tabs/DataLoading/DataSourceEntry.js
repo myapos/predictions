@@ -138,6 +138,26 @@ const DataSourceEntry = (props) => {
                   );
                 }}
               </Field>
+              <Field name="dateProperty" validate={validators.required}>
+                {({ input, meta }) => {
+                  return (
+                    <div className={loadClasses.rowForm}>
+                      <label
+                        className={`${loadClasses.label} ${loadClasses.rowLabel}`}
+                      >
+                        Date Property
+                      </label>
+                      <input
+                        {...input}
+                        type="text"
+                        placeholder="dateProperty"
+                        className={`${loadClasses.input} ${loadClasses.rowInput}`}
+                      />
+                      <Error meta={meta} />
+                    </div>
+                  );
+                }}
+              </Field>
               <Field name="windowSize" validate={validators.required}>
                 {({ input, meta }) => {
                   return (
