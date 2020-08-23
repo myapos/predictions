@@ -15,6 +15,9 @@ export const stylesForm = {
     lineHeight: "32px",
     justifySelf: "right"
   },
+  dontHaveErrors: {
+    gridColumn: "1 / span 2"
+  },
   buttons: {
     display: "flex",
     flexFlow: "row nowrap",

@@ -1,6 +1,6 @@
 const initialState = {
-  url: "",
-  rawData: ""
+  rawData: "",
+  values: {}
 };
 
 export default initialState;

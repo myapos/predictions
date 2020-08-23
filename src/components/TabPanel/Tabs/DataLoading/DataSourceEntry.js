@@ -14,9 +14,9 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const useStyles = createUseStyles({ ...stylesForm });
 const onSubmit = async (values, action) => {
   // await sleep(300);
-  window.alert(JSON.stringify(values, 0, 2));
+  // window.alert(JSON.stringify(values, 0, 2));
 
-  // action(values.url);
+  action(values);
 };
 
 const DataSourceEntry = (props) => {
@@ -50,6 +50,8 @@ const DataSourceEntry = (props) => {
   //   [loadClasses.buttons]: true
   // });
   // subscription={formSubscription}
+
+  // Monthly beer production
   return (
     <div>
       <Form
@@ -63,23 +65,24 @@ const DataSourceEntry = (props) => {
           submitError,
           ...rest
         }) => {
-          console.log(
-            "form",
-            form.getFieldState("epochs"),
-            " submitError",
-            submitError,
-            rest
-          );
+          // console.log(
+          //   "form",
+          //   form.getFieldState("epochs"),
+          //   " submitError",
+          //   submitError,
+          //   rest
+          // );
 
           const epochsField = form.getFieldState("epochs");
-          const hasEpochsError = epochsField && epochsField.submitFailed;
+          const hasEpochsError =
+            epochsField && typeof epochsField.error !== "undefined";
 
           const csvPropertyField = form.getFieldState("csvProperty");
           const hasCsvPropertyError =
-            csvPropertyField && csvPropertyField.submitFailed;
+            csvPropertyField && typeof csvPropertyField.error !== "undefined";
 
           const urlField = form.getFieldState("url");
-          const hasUrlError = urlField && urlField.submitFailed;
+          const hasUrlError = urlField && typeof urlField.error !== "undefined";
 
           const hasError = hasEpochsError || hasCsvPropertyError || hasUrlError;
 
@@ -104,7 +107,7 @@ const DataSourceEntry = (props) => {
               >
                 {(inp) => {
                   const { input, meta } = inp;
-                  console.log("inp", inp);
+                  // console.log("inp", inp);
 
                   return (
                     <Fragment>
@@ -160,6 +163,24 @@ const DataSourceEntry = (props) => {
                   );
                 }}
               </Field>
+              <Field name="windowSize" validate={validators.required}>
+                {({ input, meta }) => {
+                  return (
+                    <Fragment>
+                      <label className={loadClasses.label}>Window Size</label>
+                      <input
+                        {...input}
+                        type="text"
+                        placeholder="windowSize"
+                        className={loadClasses.input}
+                      />
+                      {meta.error && meta.touched && (
+                        <span className={loadClasses.error}>{meta.error}</span>
+                      )}
+                    </Fragment>
+                  );
+                }}
+              </Field>
               <div className={withErrorsClassesButtons}>
                 <button
                   type="submit"
@@ -168,14 +189,14 @@ const DataSourceEntry = (props) => {
                 >
                   Submit
                 </button>
-                <button
+                {/* <button
                   type="button"
                   onClick={form.reset}
                   disabled={submitting || pristine}
                   className={classesReset}
                 >
                   Reset
-                </button>
+                </button> */}
               </div>
             </form>
           );

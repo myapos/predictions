@@ -5,9 +5,10 @@ import * as actions from "../..";
 function* loadCSV(action) {
   try {
     const state = yield select();
-    const { url } = action;
-    console.log("action", action);
-    const res = yield call(api.loadCSV, url);
+    const { values } = action;
+
+    const { url, csvProperty } = values;
+    const res = yield call(api.loadCSV, url, csvProperty);
 
     if (res.length > 0) {
       yield put({ type: actions.SAGAS_LOAD_CSV, rawData: res });

@@ -7,10 +7,13 @@ import * as utils from "../../../utils";
 function* sma(action) {
   try {
     const state = yield select();
-    const { rawData } = findStateProperty(state, "loadCSV");
 
+    console.log("state", state);
+    const { rawData, values } = findStateProperty(state, "loadCSV");
+
+    const { csvProperty } = values;
     const processed = rawData.map((value) => {
-      return { xs: value.xs.Month, ys: value.ys["Monthly beer production"] };
+      return { xs: value.xs.Month, ys: value.ys[csvProperty] };
     });
 
     const sma = utils.computeSMA(processed);

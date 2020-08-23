@@ -2,18 +2,23 @@ import { call, select, put } from "redux-saga/effects";
 import * as tf from "@tensorflow/tfjs";
 import * as CONSTANTS from "../constants/constants";
 import * as actions from "../store/actions/actions";
+import findStateProperty from "../helpers/findStateProperty";
 
 function* trainModel({
   inputs,
   outputs,
   size = CONSTANTS.N_ITEMS,
-  window_size = CONSTANTS.WINDOW_SIZE,
-  n_epochs = CONSTANTS.N_EPOCHS,
+  // window_size = CONSTANTS.WINDOW_SIZE,
+  // n_epochs = CONSTANTS.N_EPOCHS,
   learning_rate = CONSTANTS.LR_RATE,
   n_layers = CONSTANTS.N_HL,
   fn
 }) {
   const state = yield select();
+
+  const {
+    values: { epochs: n_epochs, windowSize: window_size }
+  } = findStateProperty(state, "loadCSV");
 
   const input_layer_shape = window_size;
   const input_layer_neurons = 100;
