@@ -3,7 +3,7 @@
 export const GET_URL = "GET_URL";
 export const SAGAS_LOAD_CSV = "SAGAS_LOAD_CSV";
 
-export const getURl = (url) => ({
+export const getURl = (values) => ({
   type: GET_URL,
-  url
+  values
 });

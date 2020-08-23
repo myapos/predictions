@@ -1,12 +1,11 @@
 import * as tf from "@tensorflow/tfjs";
 import get from "../utils/get";
 
-export default async (url) => {
+export default async (url, csvProperty) => {
   try {
-    // return await get({ url });
     const csvDataset = tf.data.csv(url, {
       columnConfigs: {
-        "Monthly beer production": {
+        [csvProperty]: {
           isLabel: true
         }
       }

@@ -5,19 +5,28 @@ export const stylesForm = {
     fontSize: "1em",
     marginLeft: "15px",
     border: "1px solid #ccc",
-    borderRadius: "3px"
+    borderRadius: "3px",
+    maxWidth: "30rem"
   },
   label: {
     color: "#333",
-    width: "110px",
+    // width: "110px",
     fontSize: "1em",
-    lineHeight: "32px"
+    lineHeight: "32px",
+    justifySelf: "right"
+  },
+  dontHaveErrors: {
+    gridColumn: "1 / span 2"
   },
   buttons: {
     display: "flex",
     flexFlow: "row nowrap",
     justifyContent: "center",
-    marginTop: "15px"
+    marginTop: "15px",
+    gridColumn: "1 / span 2"
+  },
+  buttonsErrors: {
+    gridColumn: "1 / span 3"
   },
   button: {
     whiteSpace: "nowrap",
@@ -42,6 +51,14 @@ export const stylesForm = {
     marginLeft: "10px",
     color: "#800",
     fontWeight: "bold"
+  },
+  form: {
+    display: "grid",
+    gridTemplateColumns: "3fr 3fr",
+    gridGap: "1rem 1rem"
+  },
+  formError: {
+    gridTemplateColumns: "3fr 3fr 1fr"
   }
 
   //   form {
