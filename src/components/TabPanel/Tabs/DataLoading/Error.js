@@ -8,7 +8,7 @@ const Error = (props) => {
   const loadClasses = useStyles();
 
   if (meta.error && meta.touched) {
-    return <span className={loadClasses.error}>{meta.error}</span>;
+    return <span className={loadClasses.rowError}>{meta.error}</span>;
   }
   return null;
 };
