@@ -2,9 +2,8 @@ import React, { Fragment, useState } from "react";
 import { Form, Field } from "react-final-form";
 import { createUseStyles } from "react-jss";
 import { connect } from "react-redux";
-import { FORM_ERROR } from "final-form";
+import Error from "./Error";
 import validators from "../../../../utils/validators";
-
 import * as actions from "../../../../store";
 
 import classNames from "classnames";
@@ -20,7 +19,6 @@ const onSubmit = async (values, action) => {
 };
 
 const DataSourceEntry = (props) => {
-  // const [hasError, setHasError] = useState(false);
   const { getURl } = props;
   const loadClasses = useStyles();
 
@@ -65,39 +63,12 @@ const DataSourceEntry = (props) => {
           submitError,
           ...rest
         }) => {
-          // console.log(
-          //   "form",
-          //   form.getFieldState("epochs"),
-          //   " submitError",
-          //   submitError,
-          //   rest
-          // );
-
-          const epochsField = form.getFieldState("epochs");
-          const hasEpochsError =
-            epochsField && typeof epochsField.error !== "undefined";
-
-          const csvPropertyField = form.getFieldState("csvProperty");
-          const hasCsvPropertyError =
-            csvPropertyField && typeof csvPropertyField.error !== "undefined";
-
-          const urlField = form.getFieldState("url");
-          const hasUrlError = urlField && typeof urlField.error !== "undefined";
-
-          const hasError = hasEpochsError || hasCsvPropertyError || hasUrlError;
-
-          const withErrorsFormClasses = classNames({
-            [loadClasses.form]: true,
-            [loadClasses.formError]: hasError
-          });
-
           const withErrorsClassesButtons = classNames({
-            [loadClasses.buttons]: true,
-            [loadClasses.buttonsErrors]: hasError
+            [loadClasses.buttons]: true
           });
 
           return (
-            <form onSubmit={handleSubmit} className={withErrorsFormClasses}>
+            <form onSubmit={handleSubmit}>
               <Field
                 name="url"
                 validate={validators.composeValidators(
@@ -110,74 +81,80 @@ const DataSourceEntry = (props) => {
                   // console.log("inp", inp);
 
                   return (
-                    <Fragment>
-                      <label className={loadClasses.label}>
+                    <div className={loadClasses.rowForm}>
+                      <label
+                        className={`${loadClasses.label} ${loadClasses.rowLabel}`}
+                      >
                         Please enter url to retrieve csv data
                       </label>
                       <input
                         {...input}
                         type="text"
                         placeholder="URL"
-                        className={loadClasses.input}
+                        className={`${loadClasses.input} ${loadClasses.rowInput}`}
                       />
-                      {meta.error && meta.touched && (
-                        <span className={loadClasses.error}>{meta.error}</span>
-                      )}
-                    </Fragment>
+                      <Error meta={meta} />
+                    </div>
                   );
                 }}
               </Field>
               <Field name="epochs" validate={validators.required}>
                 {({ input, meta }) => {
                   return (
-                    <Fragment>
-                      <label className={loadClasses.label}>Epochs</label>
+                    <div className={loadClasses.rowForm}>
+                      <label
+                        className={`${loadClasses.label} ${loadClasses.rowLabel}`}
+                      >
+                        Epochs
+                      </label>
                       <input
                         {...input}
                         type="text"
                         placeholder="Epochs"
-                        className={loadClasses.input}
+                        className={`${loadClasses.input} ${loadClasses.rowInput}`}
                       />
-                      {meta.error && meta.touched && (
-                        <span className={loadClasses.error}>{meta.error}</span>
-                      )}
-                    </Fragment>
+                      <Error meta={meta} />
+                    </div>
                   );
                 }}
               </Field>
               <Field name="csvProperty" validate={validators.required}>
                 {({ input, meta }) => {
                   return (
-                    <Fragment>
-                      <label className={loadClasses.label}>Property</label>
+                    <div className={loadClasses.rowForm}>
+                      <label
+                        className={`${loadClasses.label} ${loadClasses.rowLabel}`}
+                      >
+                        Property
+                      </label>
                       <input
                         {...input}
                         type="text"
                         placeholder="csvProperty"
-                        className={loadClasses.input}
+                        className={`${loadClasses.input} ${loadClasses.rowInput}`}
                       />
-                      {meta.error && meta.touched && (
-                        <span className={loadClasses.error}>{meta.error}</span>
-                      )}
-                    </Fragment>
+                      <Error meta={meta} />
+                    </div>
                   );
                 }}
               </Field>
               <Field name="windowSize" validate={validators.required}>
                 {({ input, meta }) => {
                   return (
-                    <Fragment>
-                      <label className={loadClasses.label}>Window Size</label>
+                    <div className={loadClasses.rowForm}>
+                      <label
+                        className={`${loadClasses.label} ${loadClasses.rowLabel}`}
+                      >
+                        Window Size
+                      </label>
                       <input
                         {...input}
                         type="text"
                         placeholder="windowSize"
-                        className={loadClasses.input}
+                        className={`${loadClasses.input} ${loadClasses.rowInput}`}
                       />
-                      {meta.error && meta.touched && (
-                        <span className={loadClasses.error}>{meta.error}</span>
-                      )}
-                    </Fragment>
+                      <Error meta={meta} />
+                    </div>
                   );
                 }}
               </Field>
