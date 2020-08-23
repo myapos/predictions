@@ -25,9 +25,9 @@ export const stylesForm = {
     marginTop: "15px",
     gridColumn: "1 / span 2"
   },
-  buttonsErrors: {
-    gridColumn: "1 / span 3"
-  },
+  // buttonsErrors: {
+  //   gridColumn: "1 / span 3"
+  // },
   button: {
     whiteSpace: "nowrap",
     display: "inline-block",
@@ -52,14 +52,27 @@ export const stylesForm = {
     color: "#800",
     fontWeight: "bold"
   },
-  form: {
-    display: "grid",
-    gridTemplateColumns: "3fr 3fr",
-    gridGap: "1rem 1rem"
+  rowForm: {
+    display: "flex"
+    // flexFlow: "row wrap",
+    // margin: "0 -1rem 1rem -1rem"
   },
-  formError: {
-    gridTemplateColumns: "3fr 3fr 1fr"
-  }
+  rowLabel: {
+    flex: "0 1 100%",
+    padding: "0 1rem",
+    textAlign: "right",
+    maxWidth: "600px",
+    padding: "5px",
+    margin: "5px"
+  },
+  rowInput: {
+    flex: "0 1 100%",
+    padding: "0 1rem",
+    maxWidth: "600px",
+    padding: "5px",
+    margin: "5px"
+  },
+  rowError: {}
 
   //   form {
   //     max-width: 500px;
